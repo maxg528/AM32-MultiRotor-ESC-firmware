@@ -1484,6 +1484,11 @@ int main(void)
 
  initAfterJump();
 
+#ifdef MCU_G071
+  LL_APB2_GRP1_EnableClock(LL_APB2_GRP1_PERIPH_SYSCFG);
+  SYSCFG->CFGR1 |= SYSCFG_CFGR1_PA11_RMP | SYSCFG_CFGR1_PA12_RMP;
+#endif
+	
  initCorePeripherals();
 
   LL_TIM_CC_EnableChannel(TIM1, LL_TIM_CHANNEL_CH1);
